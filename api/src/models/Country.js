@@ -16,12 +16,20 @@ module.exports = (sequelize) => {
       unique: true,
     },
 
-    continent: {
+    flags: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        isIn: [['Africa', 'America', 'Antarctica', 'Asia', 'Europe', 'Oceania']]
+        isUrl: true,
       }
+    },
+
+    continent: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      // validate: {
+      //   isIn: [['Africa', 'America', 'Antarctica', 'Asia', 'Europe', 'Oceania']]
+      // }
     },
 
     capital: {
@@ -31,14 +39,17 @@ module.exports = (sequelize) => {
 
     subregion: {
       type: DataTypes.STRING,
+      allowNull: true,
     },
 
     area: {
       type: DataTypes.INTEGER,
+      allowNull: true,
     },
 
     population: {
       type: DataTypes.INTEGER,
+      allowNull: true,
     },
   },
   {
