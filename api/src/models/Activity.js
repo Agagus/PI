@@ -38,5 +38,8 @@ module.exports = (sequelize) => {
                 isIn: [['summer', 'autumn', 'winter', 'spring']],
             }
         }
-    })
+    },
+        {
+            timestamps: false
+        })
 }
