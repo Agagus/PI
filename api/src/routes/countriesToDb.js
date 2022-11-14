@@ -1,5 +1,5 @@
 const axios = require('axios');
-const { Country } = require('../db.js');
+const { Country, CountryActivity} = require('../db.js');
 
 //deberia traer mi database 'countries' e instanciar model
 
@@ -17,6 +17,7 @@ const createCountries = async () => {
             subregion: country['subregion'] ? country['subregion'] : 'data not found',
             area: country['area'],
             population: country['population'],
+            
         }
     })
 
@@ -38,6 +39,7 @@ const countriesToDb = async () => {
                 subregion: country.subregion,
                 area: country.area,
                 population: country.population,
+                // activities: await CountryActivity.findByPk(country.id),
             }
         })
     })

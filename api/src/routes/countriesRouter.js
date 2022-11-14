@@ -1,7 +1,7 @@
 const express = require('express');
-const { Country } = require('../db')
+const { Country, Activity } = require('../db');
 const countriesRouter = express.Router();
-const { getCountry } = require('./controllers');
+const { getCountry, countryById } = require('./controllers');
 
 
 countriesRouter.get('/', async (req, res) => {
@@ -10,36 +10,32 @@ countriesRouter.get('/', async (req, res) => {
 
         if(country) return res.send(await getCountry(country))
         else {
-            const allCountries = await Country.findAll();
+            const allCountries = await Country.findAll({include: {
+                model: Activity,
+                through: { attributes: [] }
+              }});
             return res.send(allCountries);
         }
     } catch (error) {
         return res.status(404).json({error : error.message})
     }
 
-
-
-    // try {
-
-    //     const { country } = req.query;
-
-    //     if (!country) {
-            
-    //         const names = await Country.findAll();
-    
-    //         return res.send(names);
-    //     }
-        
-    //     else { 
-    //         return res.send(await getCountry(country));
-    //     }
-    // } catch (error) {
-    //     return res.status(404).send({error : error.message}); //
-    // }
 })
 
 
-// countriesRouter.get('/')
+countriesRouter.get('/:idCountry', async (req, res) => {
+    try {
+        const { idCountry } = req.params;
+
+        const countryId = await countryById(idCountry)
+        return res.send(countryId)
+
+    } catch (error) {
+        return res.status(404).json({ error : error.message })
+    }
+
+})
+
 
 
 module.exports = countriesRouter; 

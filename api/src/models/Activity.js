@@ -22,6 +22,7 @@ module.exports = (sequelize) => {
 
         difficulty: {
             type: DataTypes.INTEGER,
+            allowNull: false,
             validate: {
                 min: 1,
                 max: 5,
@@ -30,12 +31,15 @@ module.exports = (sequelize) => {
 
         duration: {
             type: DataTypes.INTEGER,
+            allowNull: false,
         },
 
         season: {
             type: DataTypes.STRING,
+            allowNull: true,
+            defaultValue: 'all year',
             validate: {
-                isIn: [['summer', 'autumn', 'winter', 'spring']],
+                isIn: [['summer', 'autumn', 'winter', 'spring', 'all year']],
             }
         }
     },
