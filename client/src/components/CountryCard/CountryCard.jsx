@@ -1,38 +1,22 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { getAllCountries } from '../../redux/actions/index';
 
 
 const CountryCard = (props) => {
-    
-    componentDidMount() {
-        props.getAllCountries()
-    }
-    // componentDidMount(){
-    //     props.getAllCountries()
-    // }
-
-
     return (
-        <div>
-            <img alt='Country Flag'/>
+        <div>     
+            <img src={props.flags} alt='Country Flag'/>
             <h4>{props.name}</h4>
-            <h6>{props.continent}</h6>
+            <h5>{props.id}</h5>
+            <h5>{props.capital}</h5>
+            <li>
+                <ul>Continent: {props.continent}</ul>
+                <ul>Subregion: {props.subregion}</ul>
+                <ul>Population: {props.population}</ul>
+                <ul>Area: {props.area} km2</ul>
+                <ul>Activities: {props.activities}</ul>
+            </li>
         </div>
     )
 }
 
-const mapStateToProps = (state) => {
-    return {
-        countries: state.countries,
-    }
-}
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        getAllCountries : () => dispatch(getAllCountries())
-    }
-}
-
-
-export default connect((mapStateToProps, mapDispatchToProps), CountryCard)
+export default CountryCard;
