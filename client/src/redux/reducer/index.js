@@ -1,5 +1,5 @@
 // aca tengo que usar el switch case para evaluar que action me esta llegando 
-import { GET_ALL_COUNTRIES , GET_COUNTRY_DETAIL } from '../actions/index.js'
+import { GET_ALL_COUNTRIES , GET_COUNTRY_DETAIL, GET_BY_CONTINENT } from '../actions/index.js'
 
 const initialState = {
     countries: [],
@@ -18,9 +18,14 @@ const rootReducer = (state = initialState, action) => {
         case GET_COUNTRY_DETAIL :
             return {
                 ...state,
-                countryDetail : action.payload
+                countryDetail : action.payload,
             }    
 
+        case GET_BY_CONTINENT :
+            return {
+                ...state,
+                countriesContinent: action.payload,
+            }
         default : 
             return {...state} 
     }

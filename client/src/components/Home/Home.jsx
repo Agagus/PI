@@ -3,6 +3,7 @@ import React from 'react'
 import { SearchBar } from "../SearchBar/SearchBar"
 import { connect } from "react-redux";
 import { getAllCountries } from '../../redux/actions/index';
+import { Link } from "react-router-dom";
 
 
 class Home extends React.Component {
@@ -18,11 +19,14 @@ class Home extends React.Component {
         return (
                 <div>
                     <SearchBar/>
+                    <Link to = '/activities'>
+                        <button>Add activity</button>
+                    </Link>
                     <h5>
                     Esta es la ruta del home, aca necesito una searchBar, las CountryCards 
                     </h5>
                     { this.props.countries && this.props.countries.map(country => 
-                            <CountryCards 
+                            <CountryCards
                                 flags = {country.flags}
                                 name = {country.name}
                                 continent = {country.continent}

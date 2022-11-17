@@ -4,6 +4,7 @@ import axios from 'axios';
 //utilizar dispatch, que va a devolver un obj con una prop type : 'nombre de la action', payload : {la:info}
 export const GET_ALL_COUNTRIES = "GET_ALL_COUNTRIES";
 export const GET_COUNTRY_DETAIL = "GET_COUNTRY_DETAIL";
+export const GET_BY_CONTINENT = "GET_BY_CONTINEN";
 
 
 
@@ -25,6 +26,20 @@ export const getCountryDetail = (id) => {
         try {
             const country = await axios.get(`http://localhost:3001/countries/${id}`);
             return dispatch({ type: GET_COUNTRY_DETAIL, payload : country.data})    
+        } catch (error) {
+            console.error(error);
+        }
+    }
+}
+
+export const getByContinent = (continent) => {
+    return async function(dispatch){
+
+        try {
+            const countries = await axios.get('http://localhost:3001/countries');
+            const countriesContinent = countries.data.filter(country => country.continent.toLowerCase() === continent.toLowerCase)
+            
+            return dispatch({ type: GET_BY_CONTINENT, payload: countriesContinent})
         } catch (error) {
             console.error(error);
         }
