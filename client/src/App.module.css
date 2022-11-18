@@ -1,0 +1,11 @@
+.landingPage {
+    display: flex ;
+    width: auto;
+    height: auto;
+    /* background-image: url('./nombres-paises.jpg') ;
+    background-size: 100% 100%;
+    background-color: skyblue; */
+    justify-content: center;
+    align-content: flex-end;
+    
+}

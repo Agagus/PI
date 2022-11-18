@@ -14,6 +14,7 @@ import { getCountryDetail } from "../../redux/actions";
 
     useEffect(()=> {
         dispatch(getCountryDetail(id), [dispatch, countryDetail])
+        
     })
 
     return (

@@ -5,6 +5,7 @@ import axios from 'axios';
 export const GET_ALL_COUNTRIES = "GET_ALL_COUNTRIES";
 export const GET_COUNTRY_DETAIL = "GET_COUNTRY_DETAIL";
 export const GET_BY_CONTINENT = "GET_BY_CONTINEN";
+export const POST_ACTIVITY = 'POST_ACTIVITY';
 
 
 
@@ -40,6 +41,18 @@ export const getByContinent = (continent) => {
             const countriesContinent = countries.data.filter(country => country.continent.toLowerCase() === continent.toLowerCase)
             
             return dispatch({ type: GET_BY_CONTINENT, payload: countriesContinent})
+        } catch (error) {
+            console.error(error);
+        }
+    }
+}
+
+export const postActivity = (input) => {
+    return async function(dispatch){
+
+        try {
+            const activity = await axios.post('http://localhost:3001/activities', input)
+            return dispatch ({type: POST_ACTIVITY, payload : activity.data})
         } catch (error) {
             console.error(error);
         }
