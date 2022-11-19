@@ -5,15 +5,17 @@ import axios from 'axios';
 export const GET_ALL_COUNTRIES = "GET_ALL_COUNTRIES";
 export const GET_COUNTRY_DETAIL = "GET_COUNTRY_DETAIL";
 export const GET_BY_CONTINENT = "GET_BY_CONTINEN";
-export const POST_ACTIVITY = 'POST_ACTIVITY';
+export const POST_ACTIVITY = "POST_ACTIVITY";
+export const CLEAN_PAGE = "CLEAN_PAGE";
 
 
 
-export const getAllCountries = () => {
+export const getAllCountries = (name) => {
     return async function(dispatch){
+        const query = name ? `?country=${name.toLowerCase()}` : '/'
 
         try {
-            const countries = await axios.get('http://localhost:3001/countries');
+            const countries = await axios.get(`http://localhost:3001/countries${query}`);
             return dispatch({ type: GET_ALL_COUNTRIES, payload: countries.data})
         } catch (error) {
             console.error(error);
@@ -57,4 +59,8 @@ export const postActivity = (input) => {
             console.error(error);
         }
     }
+}
+
+export const cleanPage = () => {
+    return {type: GET_COUNTRY_DETAIL, payload: undefined}
 }

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
-import { useParams } from "react-router-dom";
-import { getCountryDetail } from "../../redux/actions";
+import { Link, useParams } from "react-router-dom";
+import { cleanPage, getCountryDetail } from "../../redux/actions/index";
 
 
  export const CountryDetail = () => {
@@ -13,20 +13,27 @@ import { getCountryDetail } from "../../redux/actions";
     const {id} = useParams();
 
     useEffect(()=> {
-        dispatch(getCountryDetail(id), [dispatch, countryDetail])
-        
-    })
+        dispatch(getCountryDetail(id))
+
+        // return dispatch(cleanPage())
+        },
+        [dispatch, id]
+    )
 
     return (
         <div>
+            <Link to='/countries'>
+                <button>BACK</button>
+            </Link>
+            <hr></hr>
             <img src = {countryDetail.flags} />
             <h2>{countryDetail.name}</h2>
-            <h4>{countryDetail.continent}</h4>
+            {/* <h4>{countryDetail.continent}</h4> */}
             
                 <ul>{countryDetail.id}</ul>
                 <ul>{countryDetail.capital}</ul>
-                <ul>{countryDetail.subregion}</ul>
-                <ul>Population: {countryDetail.population}</ul>
+                <ul>{countryDetail.continent}, {countryDetail.subregion}</ul>
+                <ul>Population: {countryDetail.population} inhabitants</ul>
                 <ul>Area: {countryDetail.area} km2</ul>
                 <ul>{countryDetail.activities}</ul>
 
