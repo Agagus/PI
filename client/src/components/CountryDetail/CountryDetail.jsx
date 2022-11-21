@@ -1,45 +1,56 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { Link, useParams } from "react-router-dom";
-import { cleanPage, getCountryDetail } from "../../redux/actions/index";
+import { getCountryDetail } from "../../redux/actions/index";
+import style from './CountryDetail.module.css'
 
 
- export const CountryDetail = () => {
+export const CountryDetail = () => {
 
     const countryDetail = useSelector((state) => state.countryDetail)
 
     const dispatch = useDispatch();
 
-    const {id} = useParams();
+    const { id } = useParams();
 
-    useEffect(()=> {
+    useEffect(() => {
         dispatch(getCountryDetail(id))
 
-        // return dispatch(cleanPage())
-        },
+    },
         [dispatch, id]
     )
 
     return (
-        <div>
-            <Link to='/countries'>
-                <button>BACK</button>
-            </Link>
-            <hr></hr>
-            <img src = {countryDetail.flags} />
-            <h2>{countryDetail.name}</h2>
-            {/* <h4>{countryDetail.continent}</h4> */}
-            
-                <ul>{countryDetail.id}</ul>
-                <ul>{countryDetail.capital}</ul>
-                <ul>{countryDetail.continent}, {countryDetail.subregion}</ul>
-                <ul>Population: {countryDetail.population} inhabitants</ul>
-                <ul>Area: {countryDetail.area} km2</ul>
-                <ul>{countryDetail.activities}</ul>
+        <div className={style.div}>
+            <div className={style.nav}>
+                <Link to='/countries'>
+                    <button className={style.button}>BACK</button>
+                </Link>
+            </div>
+            <div className={style.card}>
+                <img src={countryDetail.flags} className={style.img} />
+                <h4 className={style.name}>{countryDetail.name} ({countryDetail.id})</h4>
+                <div className={style.details}>
+                    <p>Capital: {countryDetail.capital}</p>
+                    <p>{countryDetail.continent}, {countryDetail.subregion}</p>
+                    <p>Population: {countryDetail.population} inhabitants</p>
+                    <p>Area: {countryDetail.area} km2</p>
+                    <div>
+                        {countryDetail && countryDetail.activities &&
+                            countryDetail.activities.map(act => {
+                                return (
+                                    <p>Activities: {act.name}</p>
+                                )
+                            })
+                        }
+
+                    </div>
+
+                </div>
+            </div>
 
         </div>
+
     )
 
 }
-
-// export default CountryDetail2;

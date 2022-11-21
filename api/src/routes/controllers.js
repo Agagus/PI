@@ -28,6 +28,7 @@ const countryById = async (id) => {
         },
         include: {
             model: Activity,
+            // attributes: ["name"],
             through: { attributes: [] }
        }
         
@@ -42,7 +43,7 @@ const countryById = async (id) => {
 
 const postActivity = async (id, name, difficulty, duration, season) => {
     
-    const idUp = id.toUpperCase()
+    // const idUp = id.toUpperCase()
     // console.log(idUp);
 
     const newActivity = await Activity.create({
@@ -54,16 +55,12 @@ const postActivity = async (id, name, difficulty, duration, season) => {
     
     await newActivity.save();
 
-    // console.log(newActivity);
-
-    const findCountry = await Country.findByPk(idUp)
+    const findCountry = await Country.findByPk(id)
 
     const addAct = await findCountry.addActivity(newActivity);
-    console.log(addAct, '******')
     
-    // console.log('COUNTRY CON ACTIVITY', addAct)
 
-    return findCountry;
+    return addAct;
 }
 
 

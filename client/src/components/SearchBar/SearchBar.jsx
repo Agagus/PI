@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useDispatch } from "react-redux";
 import { getAllCountries } from "../../redux/actions/index";
+import style from './SearchBar.module.css';
 
 
 export const SearchBar = () => {
@@ -31,11 +32,12 @@ export const SearchBar = () => {
         <div>
             <form onSubmit={handlerSubmit}>
                 <input
+                    className={style.input}
                     type= 'text'
                     name='name'
                     value={input.name}
                     onChange= {handlerChange}></input>
-                <button>Search</button>
+                <button className={style.button}>Search</button>
 
             </form>
         </div>

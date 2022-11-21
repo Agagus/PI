@@ -37,11 +37,11 @@ module.exports = (sequelize) => {
         season: {
             type: DataTypes.STRING,
             allowNull: true,
-            defaultValue: 'all year',
+            defaultValue: 'All year',
             validate: {
-                isIn: [['summer', 'autumn', 'winter', 'spring', 'all year']],
+                isIn: [['Summer', 'Autumn', 'Winter', 'Spring', 'All year']],
             }
-        }
+        },
     },
         {
             timestamps: false

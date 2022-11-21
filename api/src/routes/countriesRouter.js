@@ -12,6 +12,7 @@ countriesRouter.get('/', async (req, res) => {
         else {
             const allCountries = await Country.findAll({include: {
                 model: Activity,
+                attributes: ["name"],
                 through: { attributes: [] }
               }});
             return res.send(allCountries);

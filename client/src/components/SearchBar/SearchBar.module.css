@@ -1,0 +1,26 @@
+.input {
+    width: 50%;
+    padding: 10px;
+    margin: 10px;
+    background-color: rgb(89, 40, 6);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 13px;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+}
+
+.button {
+    background-color: rgb(247, 171, 124);
+    border: solid 1px bisque;
+    border-radius: 30px;
+    color: rgb(89, 40, 6);
+    font-size: 15px;
+    padding: 4px 10px;
+}
+
+.button:hover {
+    background-color: bisque;
+    border: solid 1px rgb(89, 40, 6);;
+    cursor: pointer;
+}
