@@ -21,17 +21,16 @@ const validate = (input) => {
 
 export const CreateActivity = () => {
     const dispatch = useDispatch();
-    const countries = useSelector((state)=> state.countries);
+    const allCountries = useSelector((state)=> state.countries);
     const history= useHistory();
-    const [input, setInput] = useState({});
+    const [input, setInput] = useState({
+        countries: []
+    });
     const [error, setError] = useState({});
 
-    // useEffect(() => { //cada vez que se genera un cambio en el input, setear el error con las validaciones
-    //     setError(validate(input))
-    // }, [input])
 
     useEffect(()=>{
-        if(!countries.length)
+        // if(!countries.length)
             dispatch(getAllCountries());
     });
 
@@ -41,21 +40,33 @@ export const CreateActivity = () => {
             [event.target.name]: event.target.value
         })
 
+        console.log(input)
+
         setError(validate({
             ...input,
             [event.target.name]: event.target.value
         }))
     }
 
+    const handlerCountries = (event) => {
+        setInput({
+            ...input,
+            countries: [...input.countries, event.target.value]
+        })
+    }
+
     
     const handlerSubmit = (e) => {
         e.preventDefault();
         
-        console.log(input)
-        // if(!Object.keys(error).length) //chequear
+        // deberia hacer un map de los input
             axios.post('http://localhost:3001/activities', input)
             .then(() => {
                 history.push('/countries')
+            })
+
+            setInput({
+                countries: []
             })
 
     }
@@ -116,9 +127,9 @@ export const CreateActivity = () => {
                     </div>
                     <div className={style.camp}>
                         <label>Country: *</label>
-                        <select className={style.option} onChange={handlerInput} name="id">
+                        <select className={style.option2} onChange={handlerCountries} name="countries" multiple>
                             {
-                                countries && countries.map((country)=>{
+                                allCountries && allCountries.map((country)=>{
                                     return (<option value={country.id}>{country.name}</option>)
                                 })
                             }

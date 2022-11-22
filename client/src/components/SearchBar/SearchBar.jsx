@@ -12,11 +12,13 @@ export const SearchBar = () => {
         name: ''
     });
 
-    const handlerChange = (event) => {
+    const handlerChange = (event) => {  //
+        event.preventDefault();
         setInput(input => ({
             ...input,
             [event.target.name]: event.target.value
             }))
+            console.log(input)
     };
 
 
@@ -34,6 +36,7 @@ export const SearchBar = () => {
                 <input
                     className={style.input}
                     type= 'text'
+                    placeholder = 'Enter a country...'
                     name='name'
                     value={input.name}
                     onChange= {handlerChange}></input>

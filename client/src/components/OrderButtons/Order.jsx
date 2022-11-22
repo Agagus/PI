@@ -5,16 +5,10 @@ import style from "./Order.module.css"
 
 export const Order = () => {
     const dispatch = useDispatch();
-    const countries = useSelector(state => state.allCountries) //me traigo all en vez de countries
+    const countries = useSelector(state => state.countries) //me traigo all en vez de countries
     const activities = useSelector(state => state.activities); 
     
-    const [order, setOrder] = useState({
-        countries,
-        // asc: asc,
-        // desc: desc,
-        // ascP: ascP,
-        // descP: descP,
-    })
+    const [order, setOrder] = useState('');
 
     useEffect(() => {
         dispatch(getAllCountries());
@@ -22,16 +16,25 @@ export const Order = () => {
     
     
     const handlerOrder = (e) => {
-        setOrder({
-            ...order,
-            // countries: countries,
-            [e.target.name] : e.target.value
-        })
-
-        if(e.target.name === 'asc') dispatch(getAlphabetical(e.target.value))
-        if(e.target.name === 'desc') dispatch(getAlphabetical(e.target.value))
-        if(e.target.name === 'ascP') dispatch(getByPopulation(e.target.value))
-        if(e.target.name === 'descP') dispatch(getByPopulation(e.target.value))
+        e.preventDefault();
+        if(e.target.name === 'asc') {
+            dispatch(getAlphabetical(e.target.value));
+            setOrder(e.target.value);}
+        if(e.target.name === 'desc') {
+            dispatch(getAlphabetical(e.target.value));
+            setOrder(e.target.value);}
+        if(e.target.name === 'ascP') {
+            dispatch(getByPopulation(e.target.value));
+            setOrder(e.target.value);}
+        if(e.target.name === 'descP') {
+            dispatch(getByPopulation(e.target.value));
+            setOrder(e.target.value);}
+        
+        // setOrder({
+        //     ...order,
+        //     // countries: countries,
+        //     [e.target.name] : e.target.value
+        
     }
 
 
