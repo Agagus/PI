@@ -11,48 +11,58 @@ export const Order = () => {
     const [order, setOrder] = useState('');
 
     useEffect(() => {
-        dispatch(getAllCountries());
+        dispatch(getAllCountries())
+        dispatch(getActivities());
     }, [dispatch])
     
     
-    const handlerOrder = (e) => {
-        e.preventDefault();
-        if(e.target.name === 'asc') {
-            dispatch(getAlphabetical(e.target.value));
-            setOrder(e.target.value);}
-        if(e.target.name === 'desc') {
-            dispatch(getAlphabetical(e.target.value));
-            setOrder(e.target.value);}
-        if(e.target.name === 'ascP') {
-            dispatch(getByPopulation(e.target.value));
-            setOrder(e.target.value);}
-        if(e.target.name === 'descP') {
-            dispatch(getByPopulation(e.target.value));
-            setOrder(e.target.value);}
+    // const handlerOrder = (e) => {
+    //     e.preventDefault();
+    //     if(e.target.name === 'asc') {
+    //         dispatch(getAlphabetical(e.target.value));
+    //         setOrder(e.target.value);}
+    //     if(e.target.name === 'desc') {
+    //         dispatch(getAlphabetical(e.target.value));
+    //         setOrder(e.target.value);}
+    //     if(e.target.name === 'ascP') {
+    //         dispatch(getByPopulation(e.target.value));
+    //         setOrder(e.target.value);}
+    //     if(e.target.name === 'descP') {
+    //         dispatch(getByPopulation(e.target.value));
+    //         setOrder(e.target.value);}
         
         // setOrder({
         //     ...order,
         //     // countries: countries,
         //     [e.target.name] : e.target.value
         
+    const handlerActivities = (e) => {
+        e.preventDefault();
+        dispatch(getByActivity(e.target.value))
     }
+    
 
 
     const handlerContinent = (e) => {
         e.preventDefault();
         dispatch(getByContinent(e.target.value))
+        setOrder(e.target.value)
     }
 
 
-    // const handlerOrderA = (e) => {
-    //     e.preventDefault();
-    //     dispatch(getAlphabetical(e.target.value))
-    // }
+    const handlerOrderA = (e) => {
+        e.preventDefault();
+        dispatch(getAlphabetical(e.target.value))
+        setOrder(e.target.value)
 
-    // const handlerOrderPop = (e) => {
-    //     e.preventDefault();
-    //     dispatch(getByPopulation(e.target.value))
-    // }
+    }
+
+    const handlerOrderPop = (e) => {
+        e.preventDefault();
+        dispatch(getByPopulation(e.target.value))
+        setOrder(e.target.value)
+
+    }
 
 
     return (
@@ -75,16 +85,25 @@ export const Order = () => {
                     </select>
                 </span>
                 <span>
-                    <select className= {style.btn} onChange={e => handlerOrder(e)}>
+                    <select className= {style.btn} onChange={e => handlerOrderA(e)}>
+                        <option name='random' value='random'>-</option>
                         <option name='asc' value='asc'>A - Z</option>
                         <option name= 'desc' value='desc'>Z - A</option>
                     </select>
                 </span>
                 <span>
-                    <select className= {style.btn} onChange={e => handlerOrder(e)}>
+                    <select className= {style.btn} onChange={e => handlerOrderPop(e)}>
                         <option select value='-'>-</option>
                         <option name='ascP' value='ascP'>Ascending population</option>
                         <option name='descP' value='descP'>Descending population</option>
+                    </select>
+                </span>
+                <span>
+                    <select className={style.btn} onChange={e => handlerActivities(e)}>
+                        <option value='All'>All</option>
+                        { activities && activities.map(a => {
+                            return(<option value={a.name}>{a.name}</option>)
+                        })}
                     </select>
                 </span>
             </div>

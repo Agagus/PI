@@ -15,7 +15,7 @@ export const Home = () => {
     const dispatch = useDispatch();
     const [currentPage, setCurrentPage] = useState(1);
     const [countriesPerPage, setCountriesPerPage] = useState(10);
-    const indexLast = (currentPage * countriesPerPage) - 1; 
+    const indexLast = (currentPage * countriesPerPage) - 1; //
     const indexFirst = indexLast - countriesPerPage; 
     const currentCountries = currentPage === 1 ? countries.slice(0, 9) : countries.slice(indexFirst, indexLast)
 

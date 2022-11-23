@@ -4,7 +4,7 @@ import { GET_ALL_COUNTRIES , GET_COUNTRY_DETAIL, GET_BY_CONTINENT, POST_ACTIVITY
 const initialState = {
     countries: [],
     allCountries: [], //tiene todo
-    activities: [],
+    allFromActivities: [],
     nameActivities: [],
     countryDetail: [],
 }
@@ -16,6 +16,7 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 countries: action.payload,
                 allCountries: action.payload,
+                allFromActivities: action.payload,
             }
 
         case GET_COUNTRY_DETAIL :
@@ -33,21 +34,34 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 countries: countriesContinent,
             }
-                
+
         case GET_ALPHABETICAL :
-            const total2 = state.allCountries;
-            const order = action.payload === 'asc' ?
-                total2.sort((a, b) => a.name.localeCompare(b.name)) :
-                total2.sort((a, b) => b.name.localeCompare(a.name)) ;
-                
+            const again = state.allCountries;
+            const random = state.countries
+            if(action.payload === 'random'){
                 return {
-                ...state,
-                countries: order,
+                    ...state,
+                    countries: random
+                }
             }
 
+            const alpha = action.payload === 'asc' ? again.sort((a, b) => a.name.localeCompare(b.name)) :
+            again.sort((a, b) => b.name.localeCompare(a.name))
+            
+            return {
+                ...state,
+                countries: alpha,
+            }
+        // case GET_ALPHABETICAL :
+        //     const total2 = state.allCountries;
+        //     const order = action.payload === 'asc' ?
+        //         total2.sort((a, b) => a.name.localeCompare(b.name)) :
+        //         total2.sort((a, b) => b.name.localeCompare(a.name)) ;
+                
+
         case GET_BY_POPULATION :
-            const total3 = state.allCountries;
-            const orderPopulation = action.payload === '-' ? total3 :
+            const total3 = state.countries;
+            const orderPopulation = action.payload === '-' ? state.allCountries :
             action.payload === 'ascP' ?
             total3.sort((a, b) => a.population - b.population) :
             total3.sort((a, b) => b.population - a.population) ;
@@ -57,11 +71,40 @@ const rootReducer = (state = initialState, action) => {
                 countries: orderPopulation,
             }
 
-        // case 
+        case GET_ACTIVITIES :
+            return {
+                ...state,
+                activities: action.payload,
+            }
+
+        case GET_BY_ACTIVITY :
+            const all = state.allFromActivities
+            const activities = action.payload === 'All' ? all :
+            all.filter(country => country.activities.name === action.payload);
+    
+            return {
+                ...state,
+                countries: activities,
+            }
+
+
+
+            // const total = state.allCountries;
+            // const countriesContinent = action.payload === 'All' ? total : 
+            // total.filter(country => country.continent === action.payload)
+
+            // return {
+            //     ...state,
+            //     countries: countriesContinent,
+            // }
+
 
             default : 
             return {...state} 
         }
+
+
+
         
     }
     

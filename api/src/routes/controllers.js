@@ -41,10 +41,8 @@ const countryById = async (id) => {
 }
 
 
-const postActivity = async (id, name, difficulty, duration, season) => {
+const postActivity = async (name, difficulty, duration, season, country) => {
     
-    // const idUp = id.toUpperCase()
-    // console.log(idUp);
 
     const newActivity = await Activity.create({
             name: name,
@@ -55,9 +53,15 @@ const postActivity = async (id, name, difficulty, duration, season) => {
     
     await newActivity.save();
 
-    const findCountry = await Country.findByPk(id)
+    // const findCountry = await Country.findByPk(id)
+    const findCountries = await Country.findAll({
+        where:
+            { name: country }
+    })
 
-    const addAct = await findCountry.addActivity(newActivity);
+//
+
+    const addAct = await newActivity.addCountry(findCountries);
     
 
     return addAct;

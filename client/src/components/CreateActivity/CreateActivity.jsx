@@ -24,7 +24,7 @@ export const CreateActivity = () => {
     const allCountries = useSelector((state)=> state.countries);
     const history= useHistory();
     const [input, setInput] = useState({
-        countries: []
+        country: []
     });
     const [error, setError] = useState({});
 
@@ -32,7 +32,7 @@ export const CreateActivity = () => {
     useEffect(()=>{
         // if(!countries.length)
             dispatch(getAllCountries());
-    });
+    }, []);
 
     const handlerInput = (event) => {
         setInput({
@@ -48,10 +48,10 @@ export const CreateActivity = () => {
         }))
     }
 
-    const handlerCountries = (event) => {
+    const handlerCountries = (e) => {
         setInput({
             ...input,
-            countries: [...input.countries, event.target.value]
+            country: [...input.country, e.target.value]
         })
     }
 
@@ -59,14 +59,13 @@ export const CreateActivity = () => {
     const handlerSubmit = (e) => {
         e.preventDefault();
         
-        // deberia hacer un map de los input
             axios.post('http://localhost:3001/activities', input)
             .then(() => {
                 history.push('/countries')
             })
 
             setInput({
-                countries: []
+                country: ''
             })
 
     }
@@ -98,7 +97,8 @@ export const CreateActivity = () => {
                             name='difficulty'
                             type='number'
                             onChange={handlerInput}
-                            value={input.difficulty} />
+                            value={input.difficulty}
+                            placeholder='1 to 5' />
                     </div>
                         {error.difficulty && <p>{error.difficulty}</p>}
                     <div className={style.camp}>
@@ -108,7 +108,8 @@ export const CreateActivity = () => {
                             name='duration'
                             type='number'
                             onChange={handlerInput}
-                            value={input.duration} />
+                            value={input.duration}
+                            placeholder='..hours' />
                     </div>
                         {error.duration && <p>{error.duration}</p>}
                     <div className={style.camp}>
@@ -126,11 +127,11 @@ export const CreateActivity = () => {
                         </select>
                     </div>
                     <div className={style.camp}>
-                        <label>Country: *</label>
-                        <select className={style.option2} onChange={handlerCountries} name="countries" multiple>
+                        <label>Countries: *</label>
+                        <select className={style.option2} onChange={e => handlerCountries(e)} name="country" multiple>
                             {
                                 allCountries && allCountries.map((country)=>{
-                                    return (<option value={country.id}>{country.name}</option>)
+                                    return (<option value={country.name}>{country.name}</option>)
                                 })
                             }
                         </select>
