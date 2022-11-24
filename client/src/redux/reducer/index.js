@@ -5,7 +5,7 @@ const initialState = {
     countries: [],
     allCountries: [], //tiene todo
     allFromActivities: [],
-    nameActivities: [],
+    allFromAlpha: [],
     countryDetail: [],
 }
 
@@ -17,6 +17,7 @@ const rootReducer = (state = initialState, action) => {
                 countries: action.payload,
                 allCountries: action.payload,
                 allFromActivities: action.payload,
+                allFromAlpha: action.payload,
             }
 
         case GET_COUNTRY_DETAIL :
@@ -36,12 +37,12 @@ const rootReducer = (state = initialState, action) => {
             }
 
         case GET_ALPHABETICAL :
-            const again = state.allCountries;
-            const random = state.countries
+            const again = state.allFromAlpha;
+            // const random = state.countries
             if(action.payload === 'random'){
                 return {
                     ...state,
-                    countries: random
+                    countries: state.countries,
                 }
             }
 
@@ -88,17 +89,6 @@ const rootReducer = (state = initialState, action) => {
             }
 
 
-
-            // const total = state.allCountries;
-            // const countriesContinent = action.payload === 'All' ? total : 
-            // total.filter(country => country.continent === action.payload)
-
-            // return {
-            //     ...state,
-            //     countries: countriesContinent,
-            // }
-
-
             default : 
             return {...state} 
         }
@@ -109,21 +99,4 @@ const rootReducer = (state = initialState, action) => {
     }
     
     export default rootReducer;
-    // case GET_ACTIVITIES :
     
-    //     return {
-    //         ...state,
-    //         activities: action.payload,
-    //         nameActivities: action.payload,
-    //     }
-
-    
-    // case GET_BY_ACTIVITY :
-    //     const allCountries = state.countries;
-    //     const filterCountries = action.payload === 'All' ? allCountries.filter(country => country.activities.length > 0 ? 
-    //         country.activities.find(({name}) => name === action.payload) : false ): false
-    
-    //     return {
-        //         ...state,
-        //         countries: filterCountries,
-        //     }
