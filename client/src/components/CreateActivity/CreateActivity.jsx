@@ -79,6 +79,7 @@ export const CreateActivity = () => {
                 </Link>
             </div>
             <div className={style.cont}>
+                <p className={style.title}>Complete the form to add a new activity</p>
                 <form className={style.form} onSubmit={handlerSubmit}>
                     <div className={style.camp}>
                         <label>Name: *</label>

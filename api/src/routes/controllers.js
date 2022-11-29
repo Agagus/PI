@@ -59,12 +59,22 @@ const postActivity = async (name, difficulty, duration, season, country) => {
             { name: country }
     })
 
-//
-
     const addAct = await newActivity.addCountry(findCountries);
     
 
     return addAct;
+}
+
+const deleteActivity = async (id) => {
+
+    // const activity = await Activity.findByPk(id);
+
+    const allActivities = await Activity.findAll();
+
+    const filterActivities = allActivities.filter(act => act.id !== id);
+
+    return filterActivities;
+
 }
 
 
@@ -72,4 +82,5 @@ module.exports = {
     getCountry,
     countryById,
     postActivity,
+    deleteActivity,
 }

@@ -1,18 +1,7 @@
-/* .button {
-    display: flex;
-    background-color: whitesmoke;
-    color: black;
-    border-width: 0.5rem;
-    font-size: 2rem;
-    width: fit-content;
-    height: fit-content;
-} */
-
 .button {
     background-color: rgb(89, 40, 6);
     border: solid 1px bisque;
     border-radius: 30px;
-    color: rgb(89, 40, 6);
     font-size: 15px;
     padding: 4px 10px;
     margin: 50px 10px;
@@ -23,24 +12,26 @@
     background-color: bisque;
     border: solid 1px rgb(89, 40, 6);
     cursor: pointer;
-    color:rgb(89, 40, 6)
 }
 
 .link{
-    /* color: bisque; */
-    font-style: none;
-    
+    color: bisque;
+    text-decoration: none;
+    text-shadow: 2px 2px 2px rgb(54, 24, 3);
 }
 
 .page {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-end;
-
-    /* height: 100%; */
-    /* background-repeat: no-repeat; */
-    /* background: url(../img/login-bg.JPG) no-repeat center center fixed; */
-    /* background-size: 100% 100%; */
+    justify-content: space-between;
+    color:saddlebrown;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-shadow: 2px 2px 2px rgb(54, 24, 3) ;
+    width: 200vh;
+    height: 100vh; 
+    background-repeat: no-repeat;
+    background: url(../../countries.png) no-repeat center center fixed;
+    background-size: 70% 70%;
 
 }

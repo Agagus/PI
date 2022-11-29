@@ -2,7 +2,8 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { Link, useParams } from "react-router-dom";
 import { getCountryDetail } from "../../redux/actions/index";
-import style from './CountryDetail.module.css'
+import style from './CountryDetail.module.css';
+import ActivityCard from "../ActivityCard/ActivityCard";
 
 
 export const CountryDetail = () => {
@@ -55,14 +56,21 @@ export const CountryDetail = () => {
                     { countryDetail && countryDetail.activities && 
                         countryDetail.activities.map(act => {
                             return (
-                                <div className={style.card}>
-                                    <h4 className={style.name}>{act.name}</h4>
-                                    <div className={style.details}>
-                                        <p>Difficulty: {act.difficulty}</p>
-                                        <p>Duration: {act.duration}</p>
-                                        <p>Season: {act.season}</p>
-                                    </div>
-                                </div>
+                                <ActivityCard 
+                                    id={act.id}
+                                    name={act.name}
+                                    difficulty={act.difficulty}
+                                    duration={act.duration}
+                                    season={act.season}/>
+                                // <div className={style.card}>
+                                //     <button>x</button>
+                                //     <h4 className={style.name}>{act.name}</h4>
+                                //     <div className={style.details}>
+                                //         <p>Difficulty: {act.difficulty}</p>
+                                //         <p>Duration: {act.duration}</p>
+                                //         <p>Season: {act.season}</p>
+                                //     </div>
+                                // </div>
                                 )
                         }) }
 

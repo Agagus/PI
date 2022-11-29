@@ -1,5 +1,5 @@
 // aca tengo que usar el switch case para evaluar que action me esta llegando 
-import { GET_ALL_COUNTRIES , GET_COUNTRY_DETAIL, GET_BY_CONTINENT, POST_ACTIVITY, CLEAN_PAGE, GET_ALPHABETICAL, GET_BY_ACTIVITY, GET_ACTIVITIES, GET_BY_POPULATION } from '../actions/index.js'
+import { GET_ALL_COUNTRIES , GET_COUNTRY_DETAIL, GET_BY_CONTINENT, GET_ALPHABETICAL, GET_BY_ACTIVITY, GET_ACTIVITIES, GET_BY_POPULATION, DELETE_ACTIVITY } from '../actions/index.js'
 
 const initialState = {
     countries: [],
@@ -53,12 +53,7 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 countries: alpha,
             }
-        // case GET_ALPHABETICAL :
-        //     const total2 = state.allCountries;
-        //     const order = action.payload === 'asc' ?
-        //         total2.sort((a, b) => a.name.localeCompare(b.name)) :
-        //         total2.sort((a, b) => b.name.localeCompare(a.name)) ;
-                
+
 
         case GET_BY_POPULATION :
             const total3 = state.countries;
@@ -88,12 +83,19 @@ const rootReducer = (state = initialState, action) => {
                 countries: activities,
             }
 
+        case DELETE_ACTIVITY :
+                
+            return {
+                ...state,
+                activities
+            }
 
             default : 
             return {...state} 
+        
+
+
         }
-
-
 
         
     }

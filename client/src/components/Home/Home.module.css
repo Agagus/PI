@@ -26,7 +26,6 @@
     
 }
 .cards{
-    /* padding-top: 170px; */
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

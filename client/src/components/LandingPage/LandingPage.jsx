@@ -6,7 +6,7 @@ import style from "./LandingPage.module.css"
 export const LandingPage = ()=> {
     return(
         <div className={style.page}>
-            <h2>Welcome!</h2>
+            <h2>W e l c o m e !</h2>
             <button className={style.button}>
                 <Link to='/countries' className={style.link}>Home</Link>
             </button>

@@ -25,6 +25,7 @@ countriesRouter.get('/', async (req, res) => {
 
 
 countriesRouter.get('/:idCountry', async (req, res) => {
+    
     try {
         const { idCountry } = req.params;
 

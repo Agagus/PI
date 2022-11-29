@@ -80,11 +80,6 @@ export const Order = () => {
                     </select>
                 </span>
                 <span>
-                    <select className= {style.btn}>
-                        <option value = 'All'>All</option>                
-                    </select>
-                </span>
-                <span>
                     <select className= {style.btn} onChange={e => handlerOrderA(e)}>
                         <option name='random' value='random'>-</option>
                         <option name='asc' value='asc'>A - Z</option>

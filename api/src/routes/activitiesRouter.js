@@ -1,6 +1,6 @@
 const express = require('express');
 const { Activity, Country } = require('../db');
-const { postActivity } = require('./controllers')
+const { postActivity, deleteActivity } = require('./controllers')
 const activitiesRouter = express.Router();
 
 //.post 
@@ -29,6 +29,20 @@ activitiesRouter.post('/', async (req, res) => {
         return res.send(await postActivity(name, difficulty, duration, season, country))
 
     } catch (error) {
+        return res.status(404).json({error: error.message})
+    }
+})
+
+activitiesRouter.delete('/:id' , async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const deleteAct = await deleteActivity(id);
+
+        return res.send(deleteAct);
+        
+    } catch (error) {
+
         return res.status(404).json({error: error.message})
     }
 })
