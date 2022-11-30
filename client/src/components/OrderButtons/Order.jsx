@@ -80,6 +80,14 @@ export const Order = () => {
                     </select>
                 </span>
                 <span>
+                    <select className={style.btn} onChange={e => handlerActivities(e)}>
+                        <option value='All'>All</option>
+                        { activities && activities.map(a => {
+                            return(<option value={a.name}>{a.name}</option>)
+                        })}
+                    </select>
+                </span>
+                <span>
                     <select className= {style.btn} onChange={e => handlerOrderA(e)}>
                         <option name='random' value='random'>-</option>
                         <option name='asc' value='asc'>A - Z</option>
@@ -91,14 +99,6 @@ export const Order = () => {
                         <option select value='-'>-</option>
                         <option name='ascP' value='ascP'>Ascending population</option>
                         <option name='descP' value='descP'>Descending population</option>
-                    </select>
-                </span>
-                <span>
-                    <select className={style.btn} onChange={e => handlerActivities(e)}>
-                        <option value='All'>All</option>
-                        { activities && activities.map(a => {
-                            return(<option value={a.name}>{a.name}</option>)
-                        })}
                     </select>
                 </span>
             </div>

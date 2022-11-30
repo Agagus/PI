@@ -5,7 +5,7 @@
     /* flex-wrap: wrap; */
     align-content: space-around;
     /* position: fixed; */
-    width: calc(100%);
+    width: 100%;
     background-color: rgba(159, 77, 18, 0.408);
     /* height: auto; */
 }
