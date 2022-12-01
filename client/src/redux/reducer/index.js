@@ -4,8 +4,6 @@ import { GET_ALL_COUNTRIES , GET_COUNTRY_DETAIL, GET_BY_CONTINENT, GET_ALPHABETI
 const initialState = {
     countries: [],
     allCountries: [], //tiene todo
-    allFromActivities: [],
-    allFromAlpha: [],
     countryDetail: [],
 }
 
@@ -16,8 +14,6 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 countries: action.payload,
                 allCountries: action.payload,
-                allFromActivities: action.payload,
-                allFromAlpha: action.payload,
             }
 
         case GET_COUNTRY_DETAIL :
@@ -37,15 +33,13 @@ const rootReducer = (state = initialState, action) => {
             }
 
         case GET_ALPHABETICAL :
-            const again = state.allFromAlpha;
-            // const random = state.countries
+            const again = [...state.countries]
             if(action.payload === 'random'){
                 return {
                     ...state,
                     countries: state.countries,
                 }
             }
-
             const alpha = action.payload === 'asc' ? again.sort((a, b) => a.name.localeCompare(b.name)) :
             again.sort((a, b) => b.name.localeCompare(a.name))
             
@@ -56,7 +50,7 @@ const rootReducer = (state = initialState, action) => {
 
 
         case GET_BY_POPULATION :
-            const total3 = state.countries;
+            const total3 = [...state.countries]
             const orderPopulation = action.payload === '-' ? state.allCountries :
             action.payload === 'ascP' ?
             total3.sort((a, b) => a.population - b.population) :
@@ -74,7 +68,7 @@ const rootReducer = (state = initialState, action) => {
             }
 
         case GET_BY_ACTIVITY :
-            const all = state.allFromActivities
+            const all = [...state.countries]
             const activities = action.payload === 'All' ? all :
             all.filter(country => country.activities.name === action.payload);
     

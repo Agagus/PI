@@ -1,17 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getActivities, getByContinent, getByActivity, getAlphabetical, getByPopulation, getAllCountries } from "../../redux/actions/index";
+import { getActivities, getByContinent, getByActivity, getAlphabetical, getByPopulation } from "../../redux/actions/index";
 import style from "./Order.module.css"
 
 export const Order = () => {
     const dispatch = useDispatch();
-    const countries = useSelector(state => state.countries) //me traigo all en vez de countries
     const activities = useSelector(state => state.activities); 
-    
-    const [order, setOrder] = useState('');
 
     useEffect(() => {
-        dispatch(getAllCountries())
         dispatch(getActivities());
     }, [dispatch])
     
@@ -41,27 +37,25 @@ export const Order = () => {
         dispatch(getByActivity(e.target.value))
     }
     
-
-
+    
+    
     const handlerContinent = (e) => {
         e.preventDefault();
         dispatch(getByContinent(e.target.value))
-        setOrder(e.target.value)
+        
     }
 
 
     const handlerOrderA = (e) => {
         e.preventDefault();
         dispatch(getAlphabetical(e.target.value))
-        setOrder(e.target.value)
+        
 
     }
 
     const handlerOrderPop = (e) => {
         e.preventDefault();
         dispatch(getByPopulation(e.target.value))
-        setOrder(e.target.value)
-
     }
 
 
