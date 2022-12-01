@@ -37,7 +37,7 @@ export const Home = () => {
                                 <button className={style.act}>Add activity</button>
                             </Link> 
                         </p>
-                            <Order />
+                            <Order setCurrentPage={setCurrentPage}/>
                         <p className={style.p}>
                             <Pagination 
                                 countries={countries.length}
