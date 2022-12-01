@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getActivities, getByContinent, getByActivity, getAlphabetical, getByPopulation } from "../../redux/actions/index";
 import style from "./Order.module.css"
 
-export const Order = () => {
+export const Order = ({setCurrentPage}) => {
     const dispatch = useDispatch();
     const activities = useSelector(state => state.activities); 
 
@@ -11,30 +11,12 @@ export const Order = () => {
         dispatch(getActivities());
     }, [dispatch])
     
-    
-    // const handlerOrder = (e) => {
-    //     e.preventDefault();
-    //     if(e.target.name === 'asc') {
-    //         dispatch(getAlphabetical(e.target.value));
-    //         setOrder(e.target.value);}
-    //     if(e.target.name === 'desc') {
-    //         dispatch(getAlphabetical(e.target.value));
-    //         setOrder(e.target.value);}
-    //     if(e.target.name === 'ascP') {
-    //         dispatch(getByPopulation(e.target.value));
-    //         setOrder(e.target.value);}
-    //     if(e.target.name === 'descP') {
-    //         dispatch(getByPopulation(e.target.value));
-    //         setOrder(e.target.value);}
-        
-        // setOrder({
-        //     ...order,
-        //     // countries: countries,
-        //     [e.target.name] : e.target.value
+
         
     const handlerActivities = (e) => {
         e.preventDefault();
         dispatch(getByActivity(e.target.value))
+        setCurrentPage(1)
     }
     
     
@@ -42,13 +24,14 @@ export const Order = () => {
     const handlerContinent = (e) => {
         e.preventDefault();
         dispatch(getByContinent(e.target.value))
-        
+        setCurrentPage(1)
     }
 
 
     const handlerOrderA = (e) => {
         e.preventDefault();
         dispatch(getAlphabetical(e.target.value))
+        setCurrentPage(1)
         
 
     }
@@ -56,6 +39,7 @@ export const Order = () => {
     const handlerOrderPop = (e) => {
         e.preventDefault();
         dispatch(getByPopulation(e.target.value))
+        setCurrentPage(1)
     }
 
 
