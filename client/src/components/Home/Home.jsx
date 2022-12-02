@@ -43,6 +43,7 @@ export const Home = () => {
                                 countries={countries.length}
                                 countriesPerPage={countriesPerPage}
                                 paginated={paginated}
+                                currentPage={currentPage}
                             />
                         
                         </p>
