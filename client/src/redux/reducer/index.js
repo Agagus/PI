@@ -34,12 +34,6 @@ const rootReducer = (state = initialState, action) => {
 
         case GET_ALPHABETICAL :
             const again = [...state.countries]
-            if(action.payload === 'random'){
-                return {
-                    ...state,
-                    countries: state.countries,
-                }
-            }
             const alpha = action.payload === 'asc' ? again.sort((a, b) => a.name.localeCompare(b.name)) :
             again.sort((a, b) => b.name.localeCompare(a.name))
             
