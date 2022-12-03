@@ -67,7 +67,6 @@ export const Order = ({setCurrentPage}) => {
                 </span>
                 <span>
                     <select className= {style.btn} onChange={e => handlerOrderA(e)}>
-                        <option name='random' value='random'>-</option>
                         <option name='asc' value='asc'>A - Z</option>
                         <option name= 'desc' value='desc'>Z - A</option>
                     </select>

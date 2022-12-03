@@ -16,18 +16,16 @@ export const DELETE_ACTIVITY = "DELETE_ACTIVITY";
 export const getAllCountries = (name) => {
   return async function (dispatch) {
     const query = name ? `?country=${name.toLowerCase()}` : "/";
-
-    try {
-      const countries = await axios.get(
-        `http://localhost:3001/countries${query}`
-      );
-      return dispatch({ type: GET_ALL_COUNTRIES, payload: countries.data });
-    } catch (error) {
-      alert("Country not found");
-      // console.error(error);
-    }
-  };
-};
+        try {
+            let countries = await axios.get(`http://localhost:3001/countries${query}`);
+            countries = countries.data.sort((a, b) => a.name.localeCompare(b.name))
+            return dispatch({ type: GET_ALL_COUNTRIES, payload: countries })
+        } catch (error) {
+            alert('Country not found')
+            // console.error(error);
+        }
+    }   
+}
 
 export const getCountryDetail = (id) => {
   return async function (dispatch) {

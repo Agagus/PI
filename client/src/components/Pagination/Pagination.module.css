@@ -18,6 +18,10 @@
 
 .btn:hover{
     background-color: bisque;
-    border: solid 1px bisque;
+    border: solid 1px rgb(89, 40, 6);
     cursor: pointer;
+}
+
+.isActive{
+    background: bisque;
 }

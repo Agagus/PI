@@ -8,7 +8,7 @@ import style from "./Pagination.module.css"
 //     render( miArregloDeDatos[i] )
 // }
 
-export const Pagination = ({countries, countriesPerPage, paginated}) => {
+export const Pagination = ({countries, countriesPerPage, paginated, currentPage}) => {
     const pages = [];
     
     for(let i=0; i<=Math.floor(countries / countriesPerPage); i++){
@@ -17,9 +17,9 @@ export const Pagination = ({countries, countriesPerPage, paginated}) => {
     
     return(
         <div className={style.div}>
-            { pages && pages.map(page => (
+            { pages && pages.map((page, i) => (
                 
-                <button onClick={() => paginated(page)} className={style.btn}>{page}</button>
+                <button onClick={() => paginated(page)} className={`${style.btn} ${currentPage === i + 1 && style.isActive}`}>{page}</button>
                 
             ))}
 
