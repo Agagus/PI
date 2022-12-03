@@ -1,11 +1,21 @@
-// aca tengo que usar el switch case para evaluar que action me esta llegando 
-import { GET_ALL_COUNTRIES , GET_COUNTRY_DETAIL, GET_BY_CONTINENT, GET_ALPHABETICAL, GET_BY_ACTIVITY, GET_ACTIVITIES, GET_BY_POPULATION, DELETE_ACTIVITY } from '../actions/index.js'
+// aca tengo que usar el switch case para evaluar que action me esta llegando
+import {
+  GET_ALL_COUNTRIES,
+  GET_COUNTRY_DETAIL,
+  GET_BY_CONTINENT,
+  GET_ALPHABETICAL,
+  GET_BY_ACTIVITY,
+  GET_ACTIVITIES,
+  GET_BY_POPULATION,
+  DELETE_ACTIVITY,
+  CLEAN_COUNTRY_DETAIL,
+} from "../actions/index.js";
 
 const initialState = {
-    countries: [],
-    allCountries: [], //tiene todo
-    countryDetail: [],
-}
+  countries: [],
+  allCountries: [], //tiene todo
+  countryDetail: [],
+};
 
 const rootReducer = (state = initialState, action) => {
     switch (action.type){
@@ -89,4 +99,4 @@ const rootReducer = (state = initialState, action) => {
     }
     
     export default rootReducer;
-    
+   
