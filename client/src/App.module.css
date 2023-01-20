@@ -1,22 +1,23 @@
-.landing{
-    /* background-image: url('./wp3294106.webp');
+.landing {
+  /* background-image: url('./wp3294106.webp');
     height: auto;
     width: 100%;
     background-repeat: no-repeat; */
-    background-size: 100% 100%; 
-    padding: 0;
+  background-size: 100% 100%;
+  padding: 0;
 }
 
 .app {
-    background-image: url('./background.jpg');
-    background-position: fixed;
-    background-size: 100% 100%;
-    min-height: 100vh;
-    margin: 0px;
-    padding: 0px;
-    display: flex;
-    justify-content: center;
-    /* .background {
+  background-image: url('./background.jpg');
+  /* background-position: fixed; */
+  background-size: 100% 100%;
+  min-width: 100vw;
+  min-height: 100vh;
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  justify-content: center;
+  /* .background {
         background: url('https://c4.wallpaperflare.com/wallpaper/729/301/106/free-world-map-wallpaper-preview.jpg');
         background-size: cover;
         background-position: center;
@@ -32,4 +33,4 @@
 background-repeat: no-repeat;
 /* width: auto; */
 /* height: 100%; */
-/* background-size: 100% 100%; */ 
+/* background-size: 100% 100%; */
