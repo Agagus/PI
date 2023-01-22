@@ -1,81 +1,78 @@
 .div {
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    width: 20%;
-    /* height: 30%; */
-    margin-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.cards{
-    display: flex;
-    flex-direction: row;
-    align-items: space-around;
-    margin-top: 50px;
+.cards {
+  display: flex;
+  flex-direction: row;
+  align-items: space-around;
+  margin-top: 50px;
 }
 
-.card{
-    /* margin-top: 150px; */
-    margin: 50px;
-    width: 300px;
-    border: solid 1px rgb(89, 40, 6);
-    border-radius: 2rem;
-    background-color:  rgba(89, 41, 6, 0.535);
-    font-size: 25px;
-    display: flex;
-    flex-direction: column;
-    /* justify-content: center; */
-    align-items: center;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+.card {
+  margin: 20px 20px 0px 20px;
+  width: 300px;
+  border: solid 1px rgb(89, 40, 6);
+  border-radius: 2rem;
+  background-color: rgba(89, 41, 6, 0.535);
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.img{
-    width: 100%;
-    height: auto;
-    margin: 0;
-    border-radius: 2rem 2rem 0 0;
-    padding: 0;
+.img {
+  width: 100%;
+  height: auto;
+  margin: 0;
+  border-radius: 2rem 2rem 0 0;
+  padding: 0;
 }
 
-.name{
-    color:rgb(50, 23, 4);
-    font-size: 1.5rem;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    align-self: center;
-    text-shadow: 2px 2px 3px bisque;
+.name {
+  color: rgb(50, 23, 4);
+  font-size: 1.2rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  align-self: center;
+  text-shadow: 2px 2px 3px bisque;
 }
 
-.details{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 1rem;
+.details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1rem;
+  color: rgb(50, 23, 4);
 }
 
 .nav {
-    /* margin-top: 0px; */
-    margin-bottom: 10px;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    position: fixed;
-    width: 100%;
-    height: 60px;
-    background-color: rgba(159, 77, 18, 0.408);
+  /* margin-top: 0px; */
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  position: fixed;
+  width: 100%;
+  height: 60px;
+  background-color: rgba(159, 77, 18, 0.408);
 }
 
 .button {
-    background-color: rgb(247, 171, 124);
-    border: solid 1px bisque;
-    border-radius: 30px;
-    color: rgb(89, 40, 6);
-    font-size: 15px;
-    padding: 4px 10px;
-    margin: 0 10px
+  background-color: rgb(247, 171, 124);
+  border: solid 1px bisque;
+  border-radius: 30px;
+  color: rgb(89, 40, 6);
+  font-size: 15px;
+  padding: 4px 10px;
+  margin: 0 10px;
 }
 
-.button:hover{
-    background-color: bisque;
-    border: solid 1px rgb(89, 40, 6);
-    cursor: pointer;
+.button:hover {
+  background-color: bisque;
+  border: solid 1px rgb(89, 40, 6);
+  cursor: pointer;
 }

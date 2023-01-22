@@ -1,26 +1,33 @@
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { deleteActivity } from '../../redux/actions';
+import { deleteActivity, getActivities } from '../../redux/actions';
 import style from '../CountryDetail/CountryDetail.module.css';
 
-const ActivityCard = ({id ,name, difficulty, duration, season}) => {
-    
-    const dispatch = useDispatch();
+const ActivityCard = ({ id, name, difficulty, duration, season }) => {
+  const dispatch = useDispatch();
 
-    const handleActivities = (e) => {
-        dispatch(deleteActivity(id));
-    }
+  useEffect(() => {
+    dispatch(getActivities());
+  }, [dispatch]);
 
-    return (
-        <div className={style.card}>
-            <button onClick={handleActivities}>x</button>
-            <h4 className={style.name}>{name}</h4>
-            <div className={style.details}>
-                <p>Difficulty: {difficulty}</p>
-                <p>Duration: {duration}</p>
-                <p>Season: {season}</p>
-            </div>
-        </div>
-    )
-}
+  const handleActivities = (id) => {
+    dispatch(deleteActivity(id));
+    console.log('delete activity');
+  };
+
+  return (
+    <div className={style.card}>
+      <button onClick={() => handleActivities(id)} className={style.button}>
+        x
+      </button>
+      <h4 className={style.name}>{name}</h4>
+      <div className={style.details}>
+        <p>Difficulty: {difficulty}</p>
+        <p>Duration: {duration}</p>
+        <p>Season: {season}</p>
+      </div>
+    </div>
+  );
+};
 
 export default ActivityCard;

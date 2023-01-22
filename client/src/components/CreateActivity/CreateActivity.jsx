@@ -1,20 +1,20 @@
-import axios from "axios";
-import { React, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
-import { getAllCountries } from "../../redux/actions/index";
-import style from "./CreateActivity.module.css";
+import axios from 'axios';
+import { React, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useHistory } from 'react-router-dom';
+import { getAllCountries } from '../../redux/actions/index';
+import style from './CreateActivity.module.css';
 
 const validate = (input) => {
   const error = {};
 
-  if (!input.name) error.name = "Enter a name";
-  if (!input.difficulty) error.difficulty = "Enter a difficulty";
+  if (!input.name) error.name = 'Enter a name';
+  if (!input.difficulty) error.difficulty = 'Enter a difficulty';
   else if (input.difficulty < 1 || input.difficulty > 5)
-    error.difficulty = "Difficulty should be a number between 1 and 5";
-  if (!input.duration) error.duration = "Enter duration";
-  if (!input.season) input.season = "All year";
-  if (!input.country) error.country = "Enter a country";
+    error.difficulty = 'Difficulty should be a number between 1 and 5';
+  if (!input.duration) error.duration = 'Enter duration';
+  if (!input.season) input.season = 'All year';
+  if (!input.country) error.country = 'Enter a country';
 
   return error;
 };
@@ -59,65 +59,68 @@ export const CreateActivity = () => {
   const handlerSubmit = (e) => {
     e.preventDefault();
 
-    axios.post("http://localhost:3001/activities", input).then(() => {
-      history.push("/countries");
+    axios.post('http://localhost:3001/activities', input).then(() => {
+      history.push('/countries');
     });
 
     setInput({
-      country: "",
+      country: '',
     });
   };
 
   return (
     <div className={style.container}>
       <div className={style.nav}>
-        <Link to="/countries">
+        <Link to='/countries'>
           <button className={style.button}>BACK</button>
         </Link>
       </div>
       <div className={style.cont}>
         <p className={style.title}>Complete the form to add a new activity</p>
+        <p className={style.subtitle}>Fields marked with * are required</p>
         <form className={style.form} onSubmit={handlerSubmit}>
           <div className={style.camp}>
             <label>Name: *</label>
             <input
               className={style.input}
-              name="name"
-              type="text"
+              name='name'
+              type='text'
               onChange={handlerInput}
               value={input.name}
             ></input>
           </div>
-          {error.name && <p>{error.name}</p>}
+          {error.name && <p className={style.subtitle}>{error.name}</p>}
           <div className={style.camp}>
             <label>Difficulty: *</label>
             <input
               className={style.input}
-              name="difficulty"
-              type="number"
+              name='difficulty'
+              type='number'
               onChange={handlerInput}
               value={input.difficulty}
-              placeholder="1 to 5"
+              placeholder='1 to 5'
             />
           </div>
-          {error.difficulty && <p>{error.difficulty}</p>}
+          {error.difficulty && (
+            <p className={style.subtitle}>{error.difficulty}</p>
+          )}
           <div className={style.camp}>
             <label>Duration: *</label>
             <input
               className={style.input}
-              name="duration"
-              type="number"
+              name='duration'
+              type='number'
               onChange={handlerInput}
               value={input.duration}
-              placeholder="..hours"
+              placeholder='..hours'
             />
           </div>
-          {error.duration && <p>{error.duration}</p>}
+          {error.duration && <p className={style.subtitle}>{error.duration}</p>}
           <div className={style.camp}>
             <label>Season:</label>
             <select
               className={style.option}
-              name="season"
+              name='season'
               onChange={handlerInput}
               value={input.season}
             >
@@ -133,7 +136,7 @@ export const CreateActivity = () => {
             <select
               className={style.option2}
               onChange={(e) => handlerCountries(e)}
-              name="country"
+              name='country'
               multiple
             >
               {allCountries &&
@@ -143,7 +146,7 @@ export const CreateActivity = () => {
             </select>
           </div>
           {/* {error.country && <p>{error.country}</p>} */}
-          <button className={style.button} type="submit">
+          <button className={style.button} type='submit'>
             Submit
           </button>
         </form>
