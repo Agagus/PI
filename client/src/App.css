@@ -39,3 +39,18 @@ body {
     transform: rotate(360deg);
   }
 }
+
+input {
+  width: 50%;
+  padding: 10px;
+  margin: 10px;
+  background-color: rgb(89, 40, 6);
+  color: bisque;
+  border: none;
+  border-radius: 30px;
+  font-size: 13px;
+}
+
+input::placeholder{
+  color: bisque;
+}

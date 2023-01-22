@@ -21,7 +21,3 @@
   border: solid 1px bisque;
   cursor: pointer;
 }
-
-.btn:visited {
-  background-color: brown;
-}
