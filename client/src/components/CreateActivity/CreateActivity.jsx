@@ -31,7 +31,7 @@ export const CreateActivity = () => {
   useEffect(() => {
     // if(!countries.length)
     dispatch(getAllCountries());
-  }, []);
+  });
 
   const handlerInput = (event) => {
     event.target.name === 'country'
