@@ -78,21 +78,57 @@ const rootReducer = (state = initialState, action) => {
       };
 
     case GET_BY_ACTIVITY:
-      const all = [...state.countries];
-      const activities =
-        action.payload === 'All'
-          ? all
-          : all.filter((country) => country.activities.name === action.payload);
+      // const totalCountries = [...state.countries]; // activities: []
+      // // let countriesAct = [];
+      // const countriesAct = totalCountries.filter((country) => {
+      //   if (action.payload === 'All') {
+      //     return country.activities.length !== 0;
+      //   } else return country.activities.name === action.payload;
+      // });
+      // console.log(action.payload);
+      const all = state.allCountries;
+      let allWhitAct = [];
+      action.payload === 'All'
+        ? (allWhitAct = all)
+        : (allWhitAct = all.filter(
+            (country) =>
+              country.activities.length &&
+              country.activities.some((act) => act.name === action.payload)
+          ));
+
+      console.log(allWhitAct, 'primer filter');
 
       return {
         ...state,
-        countries: activities,
+        countries: allWhitAct,
+      };
+
+    // console.log(all);
+    // const orderActivities =
+    //   action.payload === 'All'
+    //     ? all.filter((country) => country.activities.length)
+    //     : all.filter(
+    //         (country) =>
+    //           country.activities.length &&
+    //           country.activities.name === action.payload
+    //       );
+
+    // console.log(orderActivities);
+    // return {
+    //   ...state,
+    //   countries: orderActivities,
+    // };
+
+    case CLEAN_COUNTRY_DETAIL:
+      return {
+        ...state,
+        countryDetail: [],
       };
 
     case DELETE_ACTIVITY:
       return {
         ...state,
-        activities,
+        activities: action.payload,
       };
 
     default:

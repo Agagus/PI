@@ -34,10 +34,12 @@ export const CreateActivity = () => {
   }, []);
 
   const handlerInput = (event) => {
-    setInput({
-      ...input,
-      [event.target.name]: event.target.value,
-    });
+    event.target.name === 'country'
+      ? setInput({ ...input, country: [...input.country, event.target.value] })
+      : setInput({
+          ...input,
+          [event.target.name]: event.target.value,
+        });
 
     console.log(input);
 
@@ -49,17 +51,18 @@ export const CreateActivity = () => {
     );
   };
 
-  const handlerCountries = (e) => {
-    setInput({
-      ...input,
-      country: [...input.country, e.target.value],
-    });
-  };
+  // const handlerCountries = (e) => {
+  //   setInput({
+  //     ...input,
+  //     country: [...input.country, e.target.value],
+  //   });
+  // };
 
   const handlerSubmit = (e) => {
     e.preventDefault();
 
     axios.post('http://localhost:3001/activities', input).then(() => {
+      alert('¡Activity created successfully!');
       history.push('/countries');
     });
 
@@ -135,7 +138,7 @@ export const CreateActivity = () => {
             <label>Countries: *</label>
             <select
               className={style.option2}
-              onChange={(e) => handlerCountries(e)}
+              onChange={handlerInput}
               name='country'
               multiple
             >

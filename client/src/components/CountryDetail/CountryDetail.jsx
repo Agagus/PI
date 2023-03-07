@@ -17,6 +17,7 @@ export const CountryDetail = () => {
 
   useEffect(() => {
     dispatch(getCountryDetail(id));
+    console.log(countryDetail);
 
     return () => {
       dispatch(cleanCountryDetail());

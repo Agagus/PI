@@ -1,5 +1,5 @@
 .nav {
-  margin-top: 0px;
+  margin: 0px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -47,4 +47,27 @@
   background-color: bisque;
   border: solid 1px rgb(89, 40, 6);
   cursor: pointer;
+}
+
+.footer {
+  margin: 0px;
+  /* padding-right: 3rem; */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  min-width: 100vw;
+  background-color: rgba(159, 77, 18, 0.408);
+  min-height: auto;
+  font-size: 20px;
+}
+
+.a {
+  color: rgb(36, 17, 3);
+  margin-left: 0 0.5rem;
+}
+
+.bs {
+  margin: 0 0.5rem;
 }

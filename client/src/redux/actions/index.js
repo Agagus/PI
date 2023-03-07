@@ -4,8 +4,7 @@ import axios from 'axios';
 //utilizar dispatch, que va a devolver un obj con una prop type : 'nombre de la action', payload : {la:info}
 export const GET_ALL_COUNTRIES = 'GET_ALL_COUNTRIES';
 export const GET_COUNTRY_DETAIL = 'GET_COUNTRY_DETAIL';
-export const GET_BY_CONTINENT = 'GET_BY_CONTINEN';
-// export const POST_ACTIVITY = "POST_ACTIVITY";
+export const GET_BY_CONTINENT = 'GET_BY_CONTINENT';
 export const CLEAN_COUNTRY_DETAIL = 'CLEAN_COUNTRY_DETAIL';
 export const GET_ALPHABETICAL = 'GET_ALPHABETICAL';
 export const GET_BY_ACTIVITY = 'GET_BY_ACTIVITY';
@@ -24,7 +23,6 @@ export const getAllCountries = (name) => {
       return dispatch({ type: GET_ALL_COUNTRIES, payload: countries });
     } catch (error) {
       alert('Country not found');
-      // console.error(error);
     }
   };
 };

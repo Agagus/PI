@@ -11,8 +11,8 @@ const ActivityCard = ({ id, name, difficulty, duration, season }) => {
   }, [dispatch]);
 
   const handleActivities = (id) => {
+    console.log(name, 'first');
     dispatch(deleteActivity(id));
-    console.log('delete activity');
   };
 
   return (

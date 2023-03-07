@@ -7,6 +7,7 @@ import { getAllCountries } from '../../redux/actions/index';
 import { Link } from 'react-router-dom';
 import style from './Home.module.css';
 import { Order } from '../OrderButtons/Order';
+import { BsLinkedin, BsGithub } from 'react-icons/bs';
 
 export const Home = () => {
   const countries = useSelector((state) => state.countries);
@@ -58,6 +59,20 @@ export const Home = () => {
               id={country.id}
             />
           ))}
+      </div>
+      <div className={style.footer}>
+        <h6>Developed by Agustina Zanetti</h6>
+        {/* <div> */}
+        <a
+          className={style.a}
+          href='https://www.linkedin.com/in/agustina-zanetti-4b7a67204/'
+        >
+          <BsLinkedin className={style.bs}></BsLinkedin>
+        </a>
+        <a className={style.a} href='https://github.com/Agagus'>
+          <BsGithub className={style.bs}></BsGithub>
+        </a>
+        {/* </div> */}
       </div>
     </div>
   );

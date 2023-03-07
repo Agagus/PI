@@ -90,7 +90,7 @@
 .button {
   align-self: center;
   background-color: rgb(247, 171, 124);
-  border: solid 1px bisque;
+  border: solid 1px rgb(89, 40, 6);
   border-radius: 30px;
   color: rgb(89, 40, 6);
   font-size: 15px;

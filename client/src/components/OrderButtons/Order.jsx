@@ -11,7 +11,11 @@ import style from './Order.module.css';
 
 export const Order = ({ setCurrentPage }) => {
   const dispatch = useDispatch();
+  const countries = useSelector((state) => state.countries);
   const activities = useSelector((state) => state.activities);
+  // const [activities] = countries;
+  console.log(countries, 'countries');
+  console.log(activities, 'activities');
 
   useEffect(() => {
     dispatch(getActivities());
@@ -61,7 +65,7 @@ export const Order = ({ setCurrentPage }) => {
       <span>
         <label>Activities</label>
         <select className={style.btn} onChange={(e) => handlerActivities(e)}>
-          <option value='All'>All</option>
+          <option value='All'>All countries</option>
           {activities &&
             activities.map((a) => {
               return <option value={a.name}>{a.name}</option>;
@@ -71,9 +75,9 @@ export const Order = ({ setCurrentPage }) => {
       <span>
         <label>Order alphabetical</label>
         <select className={style.btn} onChange={(e) => handlerOrderA(e)}>
-          <option name='random' value='random'>
+          {/* <option name='random' value='random'>
             -
-          </option>
+          </option> */}
           <option name='asc' value='asc'>
             A - Z
           </option>
