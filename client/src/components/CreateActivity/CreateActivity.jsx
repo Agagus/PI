@@ -61,7 +61,7 @@ export const CreateActivity = () => {
   const handlerSubmit = (e) => {
     e.preventDefault();
 
-    axios.post('http://localhost:3001/activities', input).then(() => {
+    axios.post('/activities', input).then(() => {
       alert('¡Activity created successfully!');
       history.push('/countries');
     });

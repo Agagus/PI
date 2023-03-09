@@ -16,9 +16,7 @@ export const getAllCountries = (name) => {
   return async function (dispatch) {
     const query = name ? `?country=${name.toLowerCase()}` : '/';
     try {
-      let countries = await axios.get(
-        `http://localhost:3001/countries${query}`
-      );
+      let countries = await axios.get(`/countries${query}`);
       countries = countries.data.sort((a, b) => a.name.localeCompare(b.name));
       return dispatch({ type: GET_ALL_COUNTRIES, payload: countries });
     } catch (error) {
@@ -30,7 +28,7 @@ export const getAllCountries = (name) => {
 export const getCountryDetail = (id) => {
   return async function (dispatch) {
     try {
-      const country = await axios.get(`http://localhost:3001/countries/${id}`);
+      const country = await axios.get(`/countries/${id}`);
       return dispatch({ type: GET_COUNTRY_DETAIL, payload: country.data });
     } catch (error) {
       console.error(error);
@@ -61,7 +59,7 @@ export const cleanCountryDetail = () => {
 export const getActivities = () => {
   return async function (dispatch) {
     try {
-      const activities = await axios.get('http://localhost:3001/activities');
+      const activities = await axios.get('/activities');
       return dispatch({ type: GET_ACTIVITIES, payload: activities.data });
     } catch (error) {
       console.error(error);
@@ -72,9 +70,7 @@ export const getActivities = () => {
 export const deleteActivity = (id) => {
   return async function (dispatch) {
     try {
-      const delAct = await axios.delete(
-        `http://localhost:3001/activities/${id}`
-      );
+      const delAct = await axios.delete(`/activities/${id}`);
       return dispatch({ type: DELETE_ACTIVITY, payload: delAct.data });
     } catch (error) {
       console.error(error);

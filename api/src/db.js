@@ -3,6 +3,7 @@ const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_PORT } = process.env;
+//psql -h db.sjifbhfwonxaovgjwbbr.supabase.co -p 5432 -d postgres -U postgres
 
 //instance Sequelize to connect to the database
 const sequelize = new Sequelize(
