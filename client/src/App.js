@@ -7,7 +7,7 @@ import { CountryDetail } from './components/CountryDetail/CountryDetail.jsx';
 import { CreateActivity } from './components/CreateActivity/CreateActivity';
 import style from './App.module.css';
 import axios from 'axios';
-axios.defaults.baseURL = 'pi-production.up.railway.app';
+axios.defaults.baseURL = 'https://pi-production.up.railway.app';
 // import CountryCard from './components/CountryCard/CountryCard.jsx';
 // En este archivo hacer las routes
 
