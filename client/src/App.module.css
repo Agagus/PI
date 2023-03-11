@@ -11,26 +11,22 @@
   background-image: url('./background.jpg');
   /* background-position: fixed; */
   background-size: 100% 100%;
-  min-width: 100vw;
   min-height: 100vh;
   margin: 0px;
   padding: 0px;
   display: flex;
   justify-content: center;
-  /* .background {
-        background: url('https://c4.wallpaperflare.com/wallpaper/729/301/106/free-world-map-wallpaper-preview.jpg');
-        background-size: cover;
-        background-position: center;
-        position: absolute;
-        z-index: 999;
-        width: 100vw;
-        height: 100vh;
-        background-color: blue;
-      } */
 }
 
-/* background-image: url('../../nombres-paises.jpg') no-repeat center center fixed;
-background-repeat: no-repeat;
-/* width: auto; */
-/* height: 100%; */
-/* background-size: 100% 100%; */
+@media (max-width: 700px) {
+  .app {
+    background-size: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .app {
+    min-width: 100vw;
+    background-size: 100%;
+  }
+}

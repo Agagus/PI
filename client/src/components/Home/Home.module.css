@@ -4,9 +4,7 @@
   flex-direction: column;
   flex-wrap: wrap;
   align-content: space-around;
-  min-width: 100vw;
-  background-color: rgba(159, 77, 18, 0.408);
-  min-height: auto;
+  background-color: #9f4d1268;
 }
 
 .p1 {
@@ -18,19 +16,23 @@
 
 .p {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   margin-bottom: 5px;
 }
+
 .cards {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+  min-width: 100%;
 }
 
 .container {
   margin: 0;
+  width: 100vw;
 }
 
 .act {
@@ -50,14 +52,14 @@
 }
 
 .footer {
-  margin: 0px;
-  /* padding-right: 3rem; */
+  padding-right: 2rem;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  align-self: flex-end;
   justify-content: flex-end;
   align-items: center;
-  min-width: 100vw;
+  /* min-width: 100vw; */
   background-color: rgba(159, 77, 18, 0.408);
   min-height: auto;
   font-size: 20px;

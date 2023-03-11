@@ -17,9 +17,9 @@ const ActivityCard = ({ id, name, difficulty, duration, season }) => {
 
   return (
     <div className={style.card}>
-      <button onClick={() => handleActivities(id)} className={style.button}>
+      {/* <button onClick={() => handleActivities(id)} className={style.button}>
         x
-      </button>
+      </button> */}
       <h4 className={style.name}>{name}</h4>
       <div className={style.details}>
         <p>Difficulty: {difficulty}</p>

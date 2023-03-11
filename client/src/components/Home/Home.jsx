@@ -2,7 +2,7 @@ import CountryCards from '../CountryCards/CountryCards';
 import { Pagination } from '../Pagination/Pagination';
 import React, { useEffect, useState } from 'react';
 import { SearchBar } from '../SearchBar/SearchBar';
-import { connect, useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getAllCountries } from '../../redux/actions/index';
 import { Link } from 'react-router-dom';
 import style from './Home.module.css';
@@ -62,7 +62,7 @@ export const Home = () => {
       </div>
       <div className={style.footer}>
         <h6>Developed by Agustina Zanetti</h6>
-        {/* <div> */}
+
         <a
           className={style.a}
           href='https://www.linkedin.com/in/agustina-zanetti-4b7a67204/'
@@ -72,7 +72,6 @@ export const Home = () => {
         <a className={style.a} href='https://github.com/Agagus'>
           <BsGithub className={style.bs}></BsGithub>
         </a>
-        {/* </div> */}
       </div>
     </div>
   );
