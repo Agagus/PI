@@ -8,9 +8,7 @@ import { CreateActivity } from "./components/CreateActivity/CreateActivity";
 import style from "./App.module.css";
 import axios from "axios";
 //axios.defaults.baseURL = "http://localhost:3001";
-//axios.defaults.baseURL = 'https://pi-production.up.railway.app'; //link roto
-axios.defaults.baseURL =
-  "postgres://countries_ubzs_user:TQ1ZVsQq12bRvuLRNoet8gSkUJ4Kloo0@dpg-chvii3pmbg5b5p8rk7m0-a/countries_ubzs";
+axios.defaults.baseURL = "https://pi-production.up.railway.app"; //link roto
 // import CountryCard from './components/CountryCard/CountryCard.jsx';
 // En este archivo hacer las routes
 
